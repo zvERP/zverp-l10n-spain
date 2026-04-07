@@ -1,4 +1,4 @@
-from odoo import _, models
+from odoo import _, fields, models
 
 
 class AccountMove(models.Model):
@@ -29,6 +29,8 @@ class AccountMove(models.Model):
                 move.is_invoice(include_receipts=True)
                 and not self.env.context.get("skip_verifactu_checks")
             ):
+                if move.date != fields.Date.today():
+                    move.date = fields.Date.today()
                 messages = move._verifactu_missing_info_messages()
                 if messages:
                     view = self.env.ref(
