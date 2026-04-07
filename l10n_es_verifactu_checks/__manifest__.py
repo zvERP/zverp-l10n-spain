@@ -6,6 +6,7 @@
     "depends": ["account", "l10n_es_verifactu_oca"],
     "data": [
         "security/ir.model.access.csv",
+        "views/account_journal_view.xml",
         "views/post_warning_wizard.xml",
     ],
     "license": "AGPL-3",
