@@ -4,11 +4,35 @@
         <field name="name">l10n_es_verifactu_checks.post_warning.form</field>
         <field name="model">l10n_es_verifactu_checks.post_warning</field>
         <field name="arch" type="xml">
-            <form string="Confirmar emisión">
-                <field name="message" readonly="1" nolabel="1" widget="text" class="o_wrap_text" colspan="4"/>
+            <form string="Emitir con advertencias VERI*FACTU">
+                <div class="alert alert-warning" role="alert">
+                    La factura será previsiblemente rechazada por la AEAT. Si decide
+                    emitirla igualmente, tendrá que subsanarla después. La decisión
+                    quedará registrada en el historial de la factura.
+                </div>
+                <field name="move_ids" invisible="1" />
+                <field
+                    name="message"
+                    readonly="1"
+                    nolabel="1"
+                    widget="text"
+                    class="o_wrap_text"
+                    colspan="4"
+                />
                 <footer>
-                    <button name="action_confirm" type="object" string="Confirmar" class="btn-primary"/>
-                    <button name="action_cancel" type="object" string="Cancelar" class="btn-secondary"/>
+                    <button
+                        name="action_confirm"
+                        type="object"
+                        string="Emitir igualmente"
+                        class="btn-danger"
+                        confirm="¿Confirma que desea emitir la factura pese a estas advertencias?"
+                    />
+                    <button
+                        name="action_cancel"
+                        type="object"
+                        string="Volver a corregirla"
+                        class="btn-primary"
+                    />
                 </footer>
             </form>
         </field>
